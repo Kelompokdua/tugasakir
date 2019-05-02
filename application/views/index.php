@@ -1,4 +1,4 @@
-﻿<?php var_dump($this->session->userdata('logged_in')); ?>
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>

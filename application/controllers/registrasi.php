@@ -9,6 +9,7 @@ class registrasi extends CI_Controller {
         	$session_data = $this->session->userdata('logged_in');
         	$data['username'] = $session_data['username'];
         	$data['level'] = $session_data['level'];
+            $data['poli'] = $session_data['poli'];
         }else{
         	redirect('login','refresh');
         }
@@ -16,10 +17,19 @@ class registrasi extends CI_Controller {
     }
 
     function index() {
-         $data = array(
+        if ($this->session->userdata('logged_in')['poli'] == 'Gigi') {
+             $data = array(
+            'judul' => 'Halaman View Registras',
+             'regis' => $this->RM->getgigi()
+             );
+        }else{
+             $data = array(
             'judul' => 'Halaman View Registras',
              'regis' => $this->RM->getfulljoin()
              );
+        }
+
+        
          $this->load->view('tampilan/atas');
          $this->load->view('tampilan/kiri');
          $this->load->view('regis/regis_view',$data);
@@ -28,7 +38,6 @@ class registrasi extends CI_Controller {
      function insert(){
         $data = array(
              'poli' => $this->RM->getAllPoli(),
-             'login' => $this->RM->getAllLogin(),
              'pasien' => $this->RM->getAllPasien(),
 
              );

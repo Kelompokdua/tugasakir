@@ -4,7 +4,7 @@
                                 <li class="active"><?php echo "<a href='".base_url()."index.php/home'>"; ?>Beranda
                                 </a></li>
                                 <li><?php echo "<a href='".base_url()."index.php/poli'>"; ?>Poli</a>
-                                    <?php if($this->session->userdata('logged_in')['level'] == 'admin' ||$this->session->userdata('logged_in')['level'] == 'operator' ): ?>
+                                    <?php if($this->session->userdata('logged_in')['level'] == 'admin' ||$this->session->userdata('logged_in')['level'] == 'asisten' ): ?>
                                      <li><?php echo "<a href='".base_url()."index.php/obat'>"; ?>Obat</a></li>
                                       <li><?php echo "<a href='".base_url()."index.php/dokter'>"; ?>Dokter</a></li>
                                         <li><?php echo "<a href='".base_url()."index.php/pasien'>"; ?>Pasien</a></li>

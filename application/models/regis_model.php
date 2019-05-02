@@ -33,7 +33,10 @@ public function getAllPasien()
  public function getgigi()
         {
             $query = $this->db->query("SELECT *
-FROM registrasi where registrasi.status ='Belum' AND nama= 'gigi'");
+FROM registrasi 
+inner join poli on registrasi.id_poli = poli.id_poli 
+INNER join pasien on pasien.id_pasien = registrasi.id_pasien
+WHERE registrasi.status='Belum' AND poli.nama = 'Gigi'");
             return $query->result();
         }
 
