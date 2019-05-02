@@ -29,7 +29,6 @@ class Obat extends CI_Controller {
     function insert(){
 
         $this->form_validation->set_rules('nama', 'Nama Obat', 'trim|required');
-        $this->form_validation->set_rules('jenis', 'jenis Obat', 'trim|required');
          $this->form_validation->set_rules('harga', 'Harga Obat', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
          $this->load->view('tampilan/atas');

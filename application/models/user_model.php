@@ -35,7 +35,7 @@ class user_model extends CI_Model {
 
     $data = array(
         'id_dokter' => $this->input->post('dokter'),
-         'nama' => $this->input->post('nama'),
+         'nama_pengguna' => $this->input->post('nama'),
         'username' => $this->input->post('username'),
         'password' => md5($this->input->post('password')),
         'level' => $this->input->post('level'));
@@ -57,7 +57,7 @@ public function updateUser($id)
     $data = array(
         'id_login' => $this->input->post('login'),
         'id_dokter' => $this->input->post('dokter'),
-         'nama' => $this->input->post('nama'),
+         'nama_pengguna' => $this->input->post('nama'),
         'username' => $this->input->post('username'),
         'password' => md5($this->input->post('password')),
         'level' => $this->input->post('level'));

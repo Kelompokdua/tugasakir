@@ -5,12 +5,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert Obat</title>
+	<title>Insert Rawat jalan</title>
 	<link type="text/css" href="<?php echo BASE_URL('bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
 	<link type="text/css" href="<?php echo BASE_URL('bootstrap/css/bootstrap-responsive.min.css') ?>" rel="stylesheet">
 	<link type="text/css" href="<?php echo BASE_URL('css/theme.css" rel="stylesheet') ?>">	
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
-   
+	<link type="text/css" href="<?php echo BASE_URL('select2/dist/css/select2.css" rel="stylesheet') ?>">
 </head>
 <body>
 	<div class="wrapper">
@@ -22,41 +21,39 @@
 
 						<div class="module">
 							<div class="module-head">
-								<h3>Forms Insert Obat</h3>
+								<h3>Forms Insert Rawat jalan</h3>
 							</div>
 							<div class="module-body">
 								<br />
 
 								<?php 
-								echo form_open('obat/insert');
+								echo form_open('registrasi/insert');
 								?>
 								<?php if (!empty(validation_errors())) { ?>
 								<div class="alert-danger">
 									<?php echo validation_errors(); ?>
 								</div>
 								<?php } ?>
-								<div class="control-group">
-									<label class="control-label" for="basicinput">Nama Obat</label>
-									<div class="controls">
-										<input type="text" id="basicinput" name="nama"  class="span8">
-									</div>
-								</div>
-								</div>
-								<div class="col-md-6">
-                <div id="my_camera"></div>
-                <br/>
-                <input type=button value="Take Snapshot" onClick="take_snapshot()">
-                <input type="hidden" name="image" class="image-tag">
-            </div>
-            <div class="col-md-3">
-                <div id="results">Your captured image will appear here...</div>
-            </div>
-								<div class="control-group">
-									<label class="control-label" for="basicinput">Harga Obat</label>
-									<div class="controls">
-										<input type="number" id="basicinput" name="harga"  class="span8">
-									</div>
-								</div>
+								
+										<div class="control-group">
+											<label class="control-label">Pasien</label>
+											<select class="form-control select2" name="idpasien">		<option value="">-Pilih-</option>
+												<?php foreach ($pasien as $rowpasien): ?>
+
+													<option value="<?=$rowpasien->id_pasien?>"><?=$rowpasien->nama_pasien?></option>
+												<?php endforeach; ?>
+											</select>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Poli</label>
+											<select class="form-control " name="idpoli">		<option value="">-Pilih-</option>
+												<?php foreach ($poli as $rowpoli): ?>
+
+													<option value="<?=$rowpoli->id_poli?>. <?=$rowpoli->nama?>"><?=$rowpoli->nama?></option>
+												<?php endforeach; ?>
+											</select>
+										</div>
+									
 								<div class="control-group">
 									<div class="controls">
 										<button type="submit" class="btn btn-info">Submit Form</button>
@@ -73,27 +70,18 @@
 
 	<div class="footer">
 	</div>
-<script language="JavaScript">
-    Webcam.set({
-        width: 320,
-        height: 250,
-        image_format: 'jpeg',
-        jpeg_quality: 90,
-         flip_horiz: true
-    });
-  
-    Webcam.attach( '#my_camera' );
-  
-    function take_snapshot() {
-        Webcam.snap( function(data_uri) {
-            $(".image-tag").val(data_uri);
-            $('div#results').html('<img src="'+data_uri+'"/>');
-        } );
-    }
-</script>
+
 	<script src="<?php echo BASE_URL('scripts/jquery-1.9.1.min.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo BASE_URL('scripts/jquery-ui-1.10.1.custom.min.js')?> " type="text/javascript"></script>
 	<script src="<?php echo BASE_URL('bootstrap/js/bootstrap.min.js" type="text/javascript') ?>"></script>
 	<script src="<?php echo BASE_URL('select2/dist/js/select2.full.js" type="text/javascript') ?>"></script>
 	<script src="<?php echo BASE_URL('scripts/flot/jquery.flot.js') ?>" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.select2').select2()
+			$('.select2').change(function() {
+				
+			});
+		})
+	</script>
 </body>

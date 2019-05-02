@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?php var_dump($this->session->userdata('logged_in')); ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <head>
@@ -33,7 +34,7 @@
                             <span style="font-size: 72px;">
                              <i class="fas fa-wheelchair"></i>
                             </span>
-                            <h3 style="margin-top:20px;"><a href="<?php echo BASE_URL(''); ?>index.php/grafik">Registrasi Rawat Jalan</a></h3>
+                            <h3 style="margin-top:20px;"><a href="<?php echo BASE_URL(''); ?>index.php/registrasi/insert">Registrasi Rawat Jalan</a></h3>
                            </div>
                         </div>
                     </div>
@@ -49,7 +50,7 @@
                             <span style="font-size: 72px;">
                              <i class="fas fa-user"></i>
                             </span>
-                            <h3 style="margin-top:20px;"><a href="<?php echo BASE_URL(''); ?>index.php/grafik">Registrasi Pasien</a></h3>
+                            <h3 style="margin-top:20px;"><a href="<?php echo BASE_URL(''); ?>index.php/pasien/insert">Registrasi Pasien</a></h3>
                            </div>
                         </div>
                     </div>

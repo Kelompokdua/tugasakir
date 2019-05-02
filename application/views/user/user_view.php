@@ -41,7 +41,7 @@
 											foreach ($dokter as $f){
 												echo "<tr class='w3-hover-black'>
 												<td>".$no."</td>
-												<td>$f->nama</td>
+												<td>$f->nama_pengguna</td>
 												<td>$f->username</td>
 												<td>$f->level</td>
 												";

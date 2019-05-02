@@ -55,7 +55,7 @@
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Nama </label>
 											<div class="controls">
-												<input type="text" id="basicinput" name="nama" value="<?php echo $user[0]->nama ?>" class="span8">
+												<input type="text" id="basicinput" name="nama" value="<?php echo $user[0]->nama_pengguna ?>" class="span8">
 											</div>
 										</div>
 										<div class="control-group">

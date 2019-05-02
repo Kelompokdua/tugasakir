@@ -22,35 +22,33 @@
 
 						<div class="module">
 							<div class="module-head">
-								<h3>Forms List Obat</h3>
+								<h3>Forms List Registrasi</h3>
 							</div>
 							<div class="module-body">
 								<div align="right">
-									<a href="<?php echo base_url('index.php/obat/insert/');?>"><button type="button" class="btn btn-success">Tambah Obat</button></a> 
+									<a href="<?php echo base_url('index.php/registrasi/insert/');?>"><button type="button" class="btn btn-success">Tambah regis</button></a> 
 								
 								</div>
 								<div class="module-body table">
 									<table border="1" class="w3-table-all" id="tablepeg">
 										<thead>
-											<tr><th>No</th><th>Nama Obat</th><th>Jenis Obat</th><th>Harga Obat</th><th>Action</th></tr>
+											<tr><th>Nama pasien</th><th>poli yg dituju</th><th>tanggal</th><th>Action</th></tr>
 										</thead>
 										
 										<tbody>
 											<?php
-											$no = 1;
-											foreach ($obat as $f){
+											foreach ($regis as $f){
 												echo "<tr class='w3-hover-black'>
-												<td>".$no."</td>
-												<td>$f->nama</td>";?>
-												<td><img src="<?php echo base_url().'upload/'.$f->jenis_obat ?>"></td>
-												<?php echo"
-												<td>$f->harga_obat</td>
+												<td>$f->nama_pasien</td>
+												<td>$f->nama</td>
+												<td>$f->tanggal</td>
 												";?>
 												<td>
-												<a href="<?php echo base_url('index.php/obat/edit/'); echo $f->id_obat; ?>"><button type="button" class="btn btn-warning"> Edit</button></a><br> <br>
-												<a href="<?php echo base_url('index.php/obat/hapus/'); echo $f->id_obat; ?>" class="btn btn-danger"> Hapus</a></td> 
+												<a href="<?php echo base_url('index.php/registrasi/edit/'); echo $f->id_registrasi; ?>"><button type="button" class="btn btn-info">Confirm</button></a><br> <br>
+												
+											</td> 
 												</tr>
-											<?php $no++; }
+											<?php }
 											?>
 										</tbody>
 										
