@@ -45,7 +45,7 @@ WHERE registrasi.status='Belum' AND poli.nama = 'Gigi'");
             $query = $this->db->query("SELECT *
 FROM registrasi
 LEFT JOIN poli ON registrasi.id_poli = poli.id_poli
-LEFT JOIN pasien on pasien.id_pasien = registrasi.id_pasien where registrasi.status ='Belum'");
+LEFT JOIN pasien on pasien.id_pasien = registrasi.id_pasien where registrasi.status ='Belum' AND poli.nama = 'Kesehatan anak dan ibu'");
             return $query->result();
         }
 

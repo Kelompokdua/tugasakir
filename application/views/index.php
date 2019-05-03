@@ -11,6 +11,7 @@
         <link type="text/css" href="<?php echo BASE_URL('css/theme.css') ?>" rel="stylesheet">
         <link type="text/css" href="<?php echo BASE_URL('images/icons/css/font-awesome.css') ?>" rel="stylesheet">
          <link href="<?php echo BASE_URL('assets/fontawesome-free-5.7.0-web/css/all.css') ?>" rel="stylesheet">
+         
         
     </head>
     <body>
@@ -20,7 +21,7 @@
             <div class="container">
                 <div class="row" style="width:100%;">
                     <!--/.span3-->
-                    <div class="span9">
+                    <div class="span8">
                         <div class="content">
                            <div style="background-color:#cccccc; overflow: auto;padding-left:15px;padding-right:15px;padding-top:30px;padding-bottom:15px;text-align:center;margin-bottom:50px;" class="clear_fix">
                             <h1>Selamat Datang di Dashboard <?php echo $this->session->userdata('logged_in')['level'] ?></h1>
@@ -28,9 +29,10 @@
                     </div>
                     <!--/.span9-->
                 </div>
-                <div class="span3">
+                 <?php if($this->session->userdata('logged_in')['level'] == 'admin' ||$this->session->userdata('logged_in')['level'] == 'petugas' ): ?>
+                <div class="span2">
                         <div class="content">
-                           <div style="background-color:#cccccc; overflow: auto;width:550px;height:150px;padding-left:15px;padding-right:15px;padding-top:30px;padding-bottom:15px;text-align:center;" class="clear_fix">
+                           <div style="background-color:#cccccc; overflow: auto;width:450px;height:150px;padding-left:15px;padding-right:15px;padding-top:30px;padding-bottom:15px;text-align:center;" class="clear_fix">
                             <span style="font-size: 72px;">
                              <i class="fas fa-wheelchair"></i>
                             </span>
@@ -44,7 +46,7 @@
                            </div>
                         </div>
                     </div>
-                     <div class="span3">
+                     <div class="span2">
                         <div class="content">
                            <div style="background-color:#cccccc; overflow: auto;width:260px;height:150px;padding-left:0px;padding-right:15px;padding-top:30px;padding-bottom:15px;text-align:center;" class="clear_fix">
                             <span style="font-size: 72px;">
@@ -54,6 +56,7 @@
                            </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                    
             </div>
             <!--/.container-->
