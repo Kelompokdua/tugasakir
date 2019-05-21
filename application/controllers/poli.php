@@ -33,7 +33,11 @@ class poli extends CI_Controller {
 			 $this->load->view('tampilan/atas');
          $this->load->view('tampilan/kiri');
          $this->load->view('poli/insertpoli');
-		}else{
+		}else{?>
+				<script type="text/javascript">
+    alert("Data Poli berhasil dimasukkan");
+</script>
+<?php
 				$this->PM->insertPoli();
 				redirect('poli/index','refresh');
 			}
@@ -53,7 +57,11 @@ class poli extends CI_Controller {
 			$this->load->view('tampilan/kiri');
 			$this->load->view('poli/edit_poli', $data);
 		}else {
-			
+			?>
+			<script type="text/javascript">
+    alert("Edit Data Poli berhasil");
+</script>
+			<?php
 				$this->PM->updatePoli($id);
 				redirect('poli/index','refresh');		
 		}
@@ -69,6 +77,11 @@ class poli extends CI_Controller {
 			$this->load->view('tampilan/kiri');
 			$this->load->view('poli/hapus_poli', $data);
 		}else {
+			?>
+			<script type="text/javascript">
+    alert("Data Poli berhasil dihapus");
+</script>
+			<?php
 			$this->PM->deletePoli($id);		
 			redirect('poli/index','refresh');			
 		}		

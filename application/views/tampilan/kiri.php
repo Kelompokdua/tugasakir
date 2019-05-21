@@ -7,15 +7,20 @@
                                        <li><?php echo "<a href='".base_url()."index.php/poli'>"; ?>Poli</a>
                                       <li><?php echo "<a href='".base_url()."index.php/pasien'>"; ?>Pasien</a></li>
                                       <li><?php echo "<a href='".base_url()."index.php/dokter'>"; ?>Dokter</a></li>
-                                      <li><?php echo "<a href='".base_url()."index.php/registrasi'>"; ?>List Registrasi</a></li>
                                        <?php endif; ?>
                                      <?php if($this->session->userdata('logged_in')['level'] == 'admin' ||$this->session->userdata('logged_in')['level'] == 'asisten' ): ?>
-                                      <li><?php echo "<a href='".base_url()."index.php/rm'>"; ?>Pelayanan</a></li>
+                                     
+                                      <li><?php echo "<a href='".base_url()."index.php/registrasi'>"; ?>List Registrasi</a></li>
                                        <?php endif; ?>
 
                                         <?php if($this->session->userdata('logged_in')['level'] == 'admin' ||$this->session->userdata('logged_in')['level'] == 'farmasi' ): ?>
                                      <li><?php echo "<a href='".base_url()."index.php/obat'>"; ?>Obat</a></li> 
-                                     <?php endif; ?>         
+                                     <li><?php echo "<a href='".base_url()."index.php/verifikasi'>"; ?>Verifikasi</a></li> 
+                                     <?php endif; ?>   
+
+                                     <?php if($this->session->userdata('logged_in')['level'] == 'admin' ||$this->session->userdata('logged_in')['level'] == 'kasir' ): ?>   
+                                      <li><?php echo "<a href='".base_url()."index.php/transaksi'>"; ?>Transaksi</a></li> 
+                                     <?php endif; ?>     
                                         
                                          
                                         

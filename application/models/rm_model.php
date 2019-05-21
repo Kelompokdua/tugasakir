@@ -10,7 +10,9 @@ class rm_model extends CI_Model {
             $data['poli'] = $session_data['poli'];
         }else{
             redirect('login','refresh');
+
         }
+        $this->load->model('therapi_model','TM',true);
     }
 
 
@@ -80,11 +82,14 @@ LEFT JOIN pasien on pasien.id_pasien = registrasi.id_pasien where registrasi.sta
         'tanggal' => $datetime,
         'anamnesa' => $this->input->post('anamnesa'),
         'diagnose' => $this->input->post('diagnose'),
-        'therapi' => $this->input->post('therapi'),
         'foto_resep' => $fileName
-
         );
-    $this->db->insert('rekam_medis', $data);
+     $this->db->insert('rekam_medis', $data);
+     $insert_id = $this->db->insert_id();
+     foreach ($this->input->post('tt') as $key) {
+         $this->TM->insertTherapi($key,$insert_id);
+     }
+     
 }
 
 public function getRM($id)

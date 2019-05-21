@@ -41,16 +41,12 @@
 										<input type="text" id="basicinput" name="nama"  class="span8">
 									</div>
 								</div>
+								<div class="control-group">
+									<label class="control-label" for="basicinput">Jenis Obat</label>
+									<div class="controls">
+										<input type="text" id="basicinput" name="jenis"  class="span8">
+									</div>
 								</div>
-								<div class="col-md-6">
-                <div id="my_camera"></div>
-                <br/>
-                <input type=button value="Take Snapshot" onClick="take_snapshot()">
-                <input type="hidden" name="image" class="image-tag">
-            </div>
-            <div class="col-md-3">
-                <div id="results">Your captured image will appear here...</div>
-            </div>
 								<div class="control-group">
 									<label class="control-label" for="basicinput">Harga Obat</label>
 									<div class="controls">
@@ -61,6 +57,7 @@
 									<div class="controls">
 										<button type="submit" class="btn btn-info">Submit Form</button>
 									</div>
+								</div>
 								</div>
 								<?php echo form_close(); ?>
 							</div>
@@ -73,24 +70,6 @@
 
 	<div class="footer">
 	</div>
-<script language="JavaScript">
-    Webcam.set({
-        width: 320,
-        height: 250,
-        image_format: 'jpeg',
-        jpeg_quality: 90,
-         flip_horiz: true
-    });
-  
-    Webcam.attach( '#my_camera' );
-  
-    function take_snapshot() {
-        Webcam.snap( function(data_uri) {
-            $(".image-tag").val(data_uri);
-            $('div#results').html('<img src="'+data_uri+'"/>');
-        } );
-    }
-</script>
 	<script src="<?php echo BASE_URL('scripts/jquery-1.9.1.min.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo BASE_URL('scripts/jquery-ui-1.10.1.custom.min.js')?> " type="text/javascript"></script>
 	<script src="<?php echo BASE_URL('bootstrap/js/bootstrap.min.js" type="text/javascript') ?>"></script>

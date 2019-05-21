@@ -38,6 +38,11 @@ class user extends CI_Controller {
          $this->load->view('tampilan/kiri');
          $this->load->view('user/insert_user',$data);
         }else{
+          ?>
+          <script type="text/javascript">
+    alert("Data User berhasil dimasukkan");
+</script>
+          <?php
                 $this->UM->insertUser();
                 redirect('user/index','refresh');
             }
@@ -57,6 +62,11 @@ class user extends CI_Controller {
             $this->load->view('tampilan/kiri');
             $this->load->view('user/edit_user', $data);
         }else {
+          ?>
+          <script type="text/javascript">
+    alert("Edit Data User berhasil");
+</script>
+        <?php
             
                 $this->UM->updateUser($id);
                 redirect('user/index','refresh');       
@@ -75,6 +85,11 @@ class user extends CI_Controller {
             $this->load->view('tampilan/kiri');
             $this->load->view('user/hapus_user', $data);
         }else {
+          ?>
+          <script type="text/javascript">
+    alert("Data User berhasil dihapus");
+</script>
+          <?php
             $this->UM->deleteUser($id);     
             redirect('user/index','refresh');           
         }       

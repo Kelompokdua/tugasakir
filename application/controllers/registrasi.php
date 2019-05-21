@@ -14,18 +14,24 @@ class registrasi extends CI_Controller {
         	redirect('login','refresh');
         }
         $this->load->model('regis_model','RM',true);
+        $this->load->model('rm_model','RMM',true);
     }
 
     function index() {
         if ($this->session->userdata('logged_in')['poli'] == 'Gigi') {
              $data = array(
-            'judul' => 'Halaman View Registras',
+            'judul' => 'Halaman View Registrasi',
              'regis' => $this->RM->getgigi()
+             );
+        }else if($this->session->userdata('logged_in')['poli'] == 'Kesehatan anak dan ibu'){
+             $data = array(
+            'judul' => 'Halaman View Registrasi',
+             'regis' => $this->RM->getfulljoin()
              );
         }else{
              $data = array(
-            'judul' => 'Halaman View Registras',
-             'regis' => $this->RM->getfulljoin()
+            'judul' => 'Halaman View Registrasi',
+             'regis' => $this->RM->getumum()
              );
         }
 
@@ -48,16 +54,31 @@ class registrasi extends CI_Controller {
          $this->load->view('regis/insert_regis',$data);
         }else{
                 $this->RM->insertRegis();
-                redirect('registrasi/index','refresh');
+                redirect('home','refresh');
             }
     }
 
 
     function edit($id)
     {
-            
+        $this->form_validation->set_rules('idpasien', 'ID Obat', 'trim|required');
+        $this->form_validation->set_rules('anamnesa', 'Anamnesa', 'trim|required');
+        $data['regis'] = $this->RM->getRegis($id);
+        $data = array(
+             'regis' => $this->RM->getRegis($id),
+             'obat' => $this->RM->getAllObat(),
+             );
+        if ($this->form_validation->run()==FALSE) {
+            $this->load->view('tampilan/atas');
+            $this->load->view('tampilan/kiri');
+            $this->load->view('rm/insert_rm', $data);
+        }else {
                 $this->RM->updateRegis($id);
-                redirect('registrasi/index','refresh');       
+                $this->RMM->insertRM();
+                redirect('registrasi/index','refresh');             
+        }
+                // $this->RM->updateRegis($id);
+                // redirect('registrasi/index','refresh');       
         
 
     }

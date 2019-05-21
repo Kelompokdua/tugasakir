@@ -24,6 +24,13 @@ class regis_model extends CI_Model {
         return $query->result();
 }
 
+public function getAllObat()
+{
+    $query = $this->db->get('obat');
+        return $query->result();
+}
+
+
 public function getAllPasien()
 {
     $query = $this->db->get('pasien');
@@ -36,7 +43,17 @@ public function getAllPasien()
 FROM registrasi 
 inner join poli on registrasi.id_poli = poli.id_poli 
 INNER join pasien on pasien.id_pasien = registrasi.id_pasien
-WHERE registrasi.status='Belum' AND poli.nama = 'Gigi'");
+WHERE registrasi.status='Belum' AND poli.nama = 'Gigi' order by tanggal ASC");
+            return $query->result();
+        }
+
+public function getumum()
+        {
+            $query = $this->db->query("SELECT *
+FROM registrasi 
+inner join poli on registrasi.id_poli = poli.id_poli 
+INNER join pasien on pasien.id_pasien = registrasi.id_pasien
+WHERE registrasi.status='Belum' AND poli.nama = 'Umum'");
             return $query->result();
         }
 
@@ -64,8 +81,11 @@ public function insertRegis() {
 
 public function getRegis($id)
 {
-    $this->db->where('id_registrasi', $id);
-    $query = $this->db->get('registrasi');
+    $this->db->select('*');
+    $this->db->from('pasien');
+$this->db->join('registrasi', 'pasien.id_pasien = registrasi.id_pasien');
+$this->db->where('pasien.id_pasien', $id);
+    $query = $this->db->get();
     if($query->num_rows()>0){
         return $query->result();
     }
@@ -73,7 +93,7 @@ public function getRegis($id)
 
 public function updateRegis($id)
 {
-    $this->db->where('id_registrasi', $id);
+    $this->db->where('id_pasien', $id);
     $data = array(
     	'status' => 'Selesai');
     $this->db->update('registrasi', $data);

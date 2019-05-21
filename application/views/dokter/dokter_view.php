@@ -46,7 +46,7 @@
 												<td>$f->biaya</td>
 												";?>
 												<td>
-												<a href="<?php echo base_url('index.php/dokter/edit/'); echo $f->id_dokter; ?>"><button type="button" class="btn btn-warning"> Edit</button></a><br> <br>
+												<a href="<?php echo base_url('index.php/dokter/edit/'); echo $f->id_dokter; ?>"><button type="button" class="btn btn-warning"> Edit</button></a>&nbsp;
 												<a href="<?php echo base_url('index.php/dokter/hapus/'); echo $f->id_dokter; ?>" class="btn btn-danger"> Hapus</a></td> 
 												</tr>
 											<?php $no++; }

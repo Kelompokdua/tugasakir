@@ -35,6 +35,11 @@ class Obat extends CI_Controller {
          $this->load->view('tampilan/kiri');
          $this->load->view('obat/insert_obat');
         }else{
+            ?>
+            <script type="text/javascript">
+    alert("Data Obat berhasil dimasukkan");
+</script>
+            <?php
                 $this->OM->insertObat();
                 redirect('obat/index','refresh');
             }
@@ -53,7 +58,11 @@ class Obat extends CI_Controller {
             $this->load->view('tampilan/kiri');
             $this->load->view('obat/edit_obat', $data);
         }else {
-            
+            ?>
+            <script type="text/javascript">
+    alert("Edit Data Obat berhasil");
+</script>
+            <?php
                 $this->OM->updateObat($id);
                 redirect('obat/index','refresh');       
         }
@@ -69,6 +78,11 @@ class Obat extends CI_Controller {
             $this->load->view('tampilan/kiri');
             $this->load->view('obat/hapus_obat', $data);
         }else {
+            ?>
+            <script type="text/javascript">
+    alert("Data Obat berhasil dihapus");
+</script>
+            <?php
             $this->OM->deleteObat($id);     
             redirect('obat/index','refresh');           
         }       

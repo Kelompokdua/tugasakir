@@ -20,36 +20,6 @@
 
 				<div class="span9">
 					<div class="content">
-					<div class="module">
-							<div class="module-body">
-								
-								<div class="module-body table">
-									<table border="1" class="w3-table-all" id="tablepeg">
-										<thead>
-											<tr><th>Nama pasien</th><th>poli yg dituju</th><th>tanggal</th><th>Action</th></tr>
-										</thead>
-										
-										<tbody>
-											<?php
-											foreach ($regis as $f){
-												echo "<tr class='w3-hover-black'>
-												<td>$f->nama_pasien</td>
-												<td>$f->nama</td>
-												<td>$f->tanggal</td>
-												";?>
-												<td>
-												<a href="<?php echo base_url('index.php/rm/edit/'); echo $f->id_registrasi; ?>"><button type="button" class="btn btn-info">Confirm</button></a><br> <br>
-												
-											</td> 
-												</tr>
-											<?php }
-											?>
-										</tbody>
-										
-									</table>
-								</div>
-								
-							</div>
 						<div class="module">
 							<div class="module-head">
 								<h3>Forms Insert Pelayanan</h3>
@@ -58,7 +28,7 @@
 								<br />
 
 								<?php 
-								echo form_open('rm');
+								echo form_open('registrasi/edit/'.$this->uri->segment(3));
 								?>
 								<?php if (!empty(validation_errors())) { ?>
 								<div class="alert-danger">
@@ -66,14 +36,16 @@
 								</div>
 								<?php } ?>
 								<div class="control-group">
-											<label class="control-label">Pasien</label>
-											<select class="form-control select2" name="idpasien">		<option value="">-Pilih-</option>
-												<?php foreach ($pasien as $rowpasien): ?>
-
-													<option value="<?=$rowpasien->id_pasien?>"><?=$rowpasien->nama_pasien?></option>
-												<?php endforeach; ?>
-											</select>
-										</div>
+									<div class="controls">
+										<input type="hidden" id="basicinput" name="idpasien" value="<?php echo $regis[0]->id_pasien ?>" class="span8">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="basicinput">Nama</label>
+									<div class="controls">
+										<input type="text" id="basicinput" name="nama" value="<?php echo $regis[0]->nama_pasien ?>" class="span8">
+									</div>
+								</div>
 								
 								<div class="control-group">
 									<label class="control-label" for="basicinput">Anamnesa</label>
@@ -89,18 +61,12 @@
 								</div>
 								<div class="control-group">
 											<label class="control-label">Therapi</label>
-											<select class="form-control select2" multiple="multiple" name="tt">
+											<select class="form-control select2" multiple="multiple" name="tt[]">
 												<option value="">-Silakan Pilih-</option>
 												<?php foreach ($obat as $row): ?>
-													<option value="<?=$row->nama?>"><?=$row->nama?></option>
+													<option value="<?=$row->id_obat?>"><?=$row->nama?></option>
 												<?php endforeach; ?>
 											</select>
-										</div>
-										<div class="control-group">
-											<label for="" class="control-label">Keterangan</label>
-											<div class="controls">
-												<textarea name="therapi" id="keterangan" cols="30" rows="10"></textarea>
-											</div>
 										</div>
 								<div class="col-md-6">
                 <div id="my_camera"></div>

@@ -45,7 +45,7 @@
 												<td>$f->keterangan</td>
 												";?>
 												<td>
-												<a href="<?php echo base_url('index.php/poli/edit/'); echo $f->id_poli; ?>"><button type="button" class="btn btn-warning"> Edit</button></a><br> <br>
+												<a href="<?php echo base_url('index.php/poli/edit/'); echo $f->id_poli; ?>"><button type="button" class="btn btn-warning"> Edit</button></a>&nbsp;
 												<a href="<?php echo base_url('index.php/poli/hapus/'); echo $f->id_poli; ?>" class="btn btn-danger"> Hapus</a></td> 
 												</tr>
 											<?php $no++; }

@@ -38,6 +38,11 @@ class dokter extends CI_Controller {
          $this->load->view('tampilan/kiri');
          $this->load->view('dokter/insert_dokter',$data);
         }else{
+            ?>
+            <script type="text/javascript">
+    alert("Data Dokter berhasil dimasukkan");
+</script>
+            <?php
                 $this->DM->insertDokter();
                 redirect('dokter/index','refresh');
             }
@@ -60,7 +65,11 @@ class dokter extends CI_Controller {
             $this->load->view('tampilan/kiri');
             $this->load->view('dokter/edit_dokter', $data);
         }else {
-            
+            ?>
+            <script type="text/javascript">
+    alert("Edit Data Dokter berhasil");
+</script>
+            <?php
                 $this->DM->updateDokter($id);
                 redirect('dokter/index','refresh');       
         }
@@ -75,7 +84,11 @@ class dokter extends CI_Controller {
             $this->load->view('tampilan/atas');
             $this->load->view('tampilan/kiri');
             $this->load->view('dokter/hapus_dokter', $data);
-        }else {
+        }else {?>
+        <script type="text/javascript">
+    alert("Data Dokter berhasil dihapus");
+</script>
+        <?php
             $this->DM->deleteDokter($id);     
             redirect('dokter/index','refresh');           
         }       

@@ -41,13 +41,13 @@
 											foreach ($obat as $f){
 												echo "<tr class='w3-hover-black'>
 												<td>".$no."</td>
-												<td>$f->nama</td>";?>
-												<td><img src="<?php echo base_url().'upload/'.$f->jenis_obat ?>"></td>
-												<?php echo"
+												<td>$f->nama</td>
+												<td>$f->jenis_obat</td>
+												
 												<td>$f->harga_obat</td>
 												";?>
 												<td>
-												<a href="<?php echo base_url('index.php/obat/edit/'); echo $f->id_obat; ?>"><button type="button" class="btn btn-warning"> Edit</button></a><br> <br>
+												<a href="<?php echo base_url('index.php/obat/edit/'); echo $f->id_obat; ?>"><button type="button" class="btn btn-warning"> Edit</button></a>&nbsp;
 												<a href="<?php echo base_url('index.php/obat/hapus/'); echo $f->id_obat; ?>" class="btn btn-danger"> Hapus</a></td> 
 												</tr>
 											<?php $no++; }

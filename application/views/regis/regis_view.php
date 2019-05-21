@@ -44,7 +44,7 @@
 												<td>$f->tanggal</td>
 												";?>
 												<td>
-												<a href="<?php echo base_url('index.php/registrasi/edit/'); echo $f->id_registrasi; ?>"><button type="button" class="btn btn-info">Confirm</button></a><br> <br>
+												<a href="<?php echo base_url('index.php/registrasi/edit/'); echo $f->id_pasien; ?>"><button type="button" class="btn btn-info">Confirm</button></a><br> <br>
 												
 											</td> 
 												</tr>
@@ -96,7 +96,9 @@
 	</script>
 	<script type="text/javascript">
 		$(document).ready( function () {
-			$('#tablepeg').DataTable();
+			$('#tablepeg').DataTable({
+				"ordering": false
+			});
 		} );
 	</script>
 

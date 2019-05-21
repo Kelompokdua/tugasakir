@@ -59,12 +59,22 @@ class pasien extends CI_Controller {
 
     function insert(){
 
+        $this->form_validation->set_rules('nama', 'nama Pasien', 'trim|required');
+        $this->form_validation->set_rules('jeniskelamin', 'jenis kelamin Pasien', 'trim|required');
         $this->form_validation->set_rules('alamat', 'alamat Pasien', 'trim|required');
+        $this->form_validation->set_rules('tgllahir', 'Tanggal lahir Pasien', 'trim|required');
+        $this->form_validation->set_rules('telp', 'Telp alamat Pasien', 'trim|required');
+        $this->form_validation->set_rules('status', 'status Pasien', 'trim|required');
+        $this->form_validation->set_rules('status_pasien', 'jenis Pasien', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
          $this->load->view('tampilan/atas');
          $this->load->view('tampilan/kiri');
          $this->load->view('pasien/insert_pasien');
-        }else{
+        }else{?>
+        <script type="text/javascript">
+    alert("Data Pasien berhasil dimasukkan");
+</script>
+        <?php
                 $this->PM->insertPasien();
                 redirect('pasien/index','refresh');
             }
@@ -74,16 +84,26 @@ class pasien extends CI_Controller {
     function edit($id)
     {
         $this->form_validation->set_rules('idpasien', 'ID Pasien', 'trim|required');
-        $this->form_validation->set_rules('nama', 'Nama Pasien', 'trim|required');
-        $data['pasien'] = $this->PM->getObat($id);
+         $this->form_validation->set_rules('nama', 'nama Pasien', 'trim|required');
+        $this->form_validation->set_rules('jeniskelamin', 'jenis kelamin Pasien', 'trim|required');
+        $this->form_validation->set_rules('alamat', 'alamat Pasien', 'trim|required');
+        $this->form_validation->set_rules('tgllahir', 'Tanggal lahir Pasien', 'trim|required');
+        $this->form_validation->set_rules('telp', 'Telp Pasien', 'trim|required');
+        $this->form_validation->set_rules('status', 'status Pasien', 'trim|required');
+        $this->form_validation->set_rules('status_pasien', 'jenis Pasien', 'trim|required');
+        $data['pasien'] = $this->PM->getPasien($id);
         if ($this->form_validation->run()==FALSE) {
             $this->load->view('tampilan/atas');
             $this->load->view('tampilan/kiri');
-            $this->load->view('obat/edit_obat', $data);
+            $this->load->view('pasien/edit_pasien', $data);
         }else {
-            
-                $this->PM->updateObat($id);
-                redirect('obat/index','refresh');       
+            ?>
+<script type="text/javascript">
+    alert("Edit Data Pasien berhasil");
+</script>
+            <?php
+                $this->PM->updatePasien($id);
+                redirect('pasien/index','refresh');       
         }
 
     }
@@ -97,6 +117,11 @@ class pasien extends CI_Controller {
             $this->load->view('tampilan/kiri');
             $this->load->view('pasien/hapus_pasien', $data);
         }else {
+          ?>
+<script type="text/javascript">
+    alert("Data Pasien berhasil dihapus");
+</script>
+          <?php
             $this->PM->deletePasien($id);     
             redirect('pasien/index','refresh');           
         }       
