@@ -18,46 +18,41 @@
 	</head>
 	<body>
 		<div class="container">
-		<h1 class="text-center">Semua Pengobatan Selesai</h1>
+		<h1 class="text-center">Print Transaksi</h1>
 		<br>
 		<br>
-		
+		<table>
+			<?php
+			echo"<tr><td>";
+			echo $pelayanan->nama_pasien;
+			echo"</td><td>";
+			echo $pelayanan->tanggal;
+			echo"</td><td>";
+			echo $pelayanan->harga_dokter;
+			echo"</td><td>(";
+			echo $pelayanan->total_harga_semua;
+			echo")</td></tr>";
+			?>
+		</table>
 		<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>No</th>
 						<th>Nama Pasien</th>
-						<th>Umur</th>
-						<th>Keluhan</th>
-						<th>Foto Luka</th>
-						<th>Keterangan Obat</th>
-						<th>Status</th>
+						<th>tanggal</th>
+						<th>nama obat</th>
+						<th>Harga obat</th>
+						<th>Harga dokter</th>
+						<th>Harga total</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
 					$no = 1;
-					foreach ($kelir as $row) {
-
+					foreach ($obat as $row) {	
 						echo "<tr><td>";
-						echo $no;
+						echo $row->nama;
 						echo "</td><td>";
-						echo $row['nama_pasien'];
-						echo "</td><td>";
-						echo $row['umur'];
-						echo "</td><td>";
-						echo $row['keluhan'];
-						echo "</td><td>";
-						echo $row['foto_luka'];
-						echo "</td><td>";
-						echo $row['ket_obat'];
-						echo '</td><td>';
-						if ($row['status'] == 'verifikasi') {
-							echo "<span class='glyphicon glyphicon-check'></span>  <i>Sudah verifikasi</i>";
-						} else {
-							echo "<span class='glyphicon glyphicon-ok'></span>  <i>Belum Verifikasi</i>";
-						}
-						
+						echo $row->harga_obat;
 						echo "</td></tr>";
 						$no++;
 					}

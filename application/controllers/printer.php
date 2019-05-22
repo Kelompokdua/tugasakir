@@ -7,16 +7,16 @@ class Printer extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('pdf');
-		$this->load->model('pengobatan_model');
+		$this->load->model('pasien_model');
 	}
 
 
 
-	public function semua()
+	public function semua($id)
 	{
-		 $data['kelir'] = $this->pengobatan_model->getPrint();
-		 //$this->load->view('print', $data);
-		$this->pdf->load_view('print', $data);
+		 $data['pelayanan'] = $this->pasien_model->getdetailpelayanan($id);
+		 $data['obat'] = $this->pasien_model->getdaftartherapi($id);
+		$this->load->view('print', $data);
 	}
 
 	

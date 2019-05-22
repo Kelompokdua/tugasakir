@@ -22,32 +22,29 @@
 
 						<div class="module">
 							<div class="module-head">
-								<h3>Forms List Transaksi pending</h3>
+								<h3>Forms List Rekam Medis</h3>
 							</div>
 							<div class="module-body">
 								<div align="right">
-									<!-- <a href="<?php echo base_url('index.php/poli/insert/');?>"><button type="button" class="btn btn-success">Tambah Poli</button></a>  -->
 								
 								</div>
 								<div class="module-body table">
 									<table border="1" class="w3-table-all" id="tablepeg">
 										<thead>
-											<tr><th>No</th><th>Nama</th><th>dokter</th><th>total</th><th>action</th></tr>
+											<tr><th>No</th><th>Nama Pasien</th><th>Tanggal Lahir</th><th>Action</th></tr>
 										</thead>
 										
 										<tbody>
 											<?php
 											$no = 1;
-											foreach ($rm as $f){
+											foreach ($rekam as $f){
 												echo "<tr class='w3-hover-black'>
 												<td>".$no."</td>
 												<td>$f->nama_pasien</td>
-												<td>$f->nama_dokter</td>
-												<td>$f->total_harga_semua</td>
+												<td>$f->tgl_lahir</td>
 												";?>
 												<td>
-												<a href="<?php echo base_url('index.php/transaksi/edit/'); echo $f->id_pelayanan; ?>"><button type="button" class="btn btn-info"> Verifikasi</button></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url('index.php/printer/semua/'); echo $f->id_pelayanan; ?>"><button type="button" class="btn btn-success"> print</button></a>
-
+												<a href="<?php echo base_url('index.php/rekam/index2/'); echo $f->id_pasien; ?>"><button type="button" class="btn btn-info"> Detail</button></a></td> 
 												</tr>
 											<?php $no++; }
 											?>

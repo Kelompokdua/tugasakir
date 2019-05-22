@@ -29,7 +29,7 @@ class rm_model extends CI_Model {
 FROM registrasi 
 inner join poli on registrasi.id_poli = poli.id_poli 
 INNER join pasien on pasien.id_pasien = registrasi.id_pasien
-WHERE registrasi.status='Belum' AND poli.nama = 'Gigi' LIMIT 4");
+WHERE registrasi.status='Belum' AND poli.nama = 'Gigi'");
             return $query->result();
         }
 

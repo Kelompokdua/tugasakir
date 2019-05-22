@@ -24,4 +24,17 @@ class transaksi extends CI_Controller {
          $this->load->view('tampilan/kiri');
          $this->load->view('transaksi/transaksi_index',$data);
     }
+
+     function edit($id)
+    {           
+                ?>
+                <script type="text/javascript">
+    alert("Data berhasil diverifikasi");
+</script>
+                <?php
+                $this->TM->updateTrans($id);
+                redirect('transaksi','refresh');       
+        
+
+    }
 }
