@@ -11,6 +11,7 @@
                                      <?php if($this->session->userdata('logged_in')['level'] == 'admin' ||$this->session->userdata('logged_in')['level'] == 'asisten' ): ?>
                                      
                                       <li><?php echo "<a href='".base_url()."index.php/registrasi'>"; ?>List Registrasi</a></li>
+                                      <li><?php echo "<a href='".base_url()."index.php/rekam'>"; ?>Rekam Medis</a></li>
                                        <?php endif; ?>
 
                                         <?php if($this->session->userdata('logged_in')['level'] == 'admin' ||$this->session->userdata('logged_in')['level'] == 'farmasi' ): ?>

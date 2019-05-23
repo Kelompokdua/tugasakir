@@ -23,22 +23,16 @@
 		<br>
 		<table>
 			<?php
-			echo"<tr><td>";
+			echo"<tr><td><font size='6'>nama pasien : ";
 			echo $pelayanan->nama_pasien;
-			echo"</td><td>";
-			echo $pelayanan->tanggal;
-			echo"</td><td>";
-			echo $pelayanan->harga_dokter;
-			echo"</td><td>(";
-			echo $pelayanan->total_harga_semua;
-			echo")</td></tr>";
+			echo"</font></td></tr>";
+			
 			?>
 		</table>
+		<br>
 		<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>Nama Pasien</th>
-						<th>tanggal</th>
 						<th>nama obat</th>
 						<th>Harga obat</th>
 						<th>Harga dokter</th>
@@ -46,6 +40,8 @@
 					</tr>
 				</thead>
 				<tbody>
+					
+					<tr>	
 					<?php
 					$no = 1;
 					foreach ($obat as $row) {	
@@ -53,13 +49,17 @@
 						echo $row->nama;
 						echo "</td><td>";
 						echo $row->harga_obat;
-						echo "</td></tr>";
+						echo "</td>";
 						$no++;
 					}
-
-
+					echo "<td>";
+					echo $pelayanan->harga_dokter;
+					echo "</td><td>";
+					echo $pelayanan->total_harga_semua;
+					echo "</td>";
 
 					?>
+					</tr>
 				</tbody>
 			</table>
 			</div>
