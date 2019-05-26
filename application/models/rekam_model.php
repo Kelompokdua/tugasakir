@@ -19,7 +19,7 @@ WHERE rekam_medis.status_farmasi ='selesai' AND rekam_medis.status_transaksi = '
 FROM rekam_medis
 INNER JOIN pasien on pasien.id_pasien = rekam_medis.id_pasien
 INNER JOIN dokter on dokter.id_dokter = rekam_medis.id_dokter
-WHERE rekam_medis.status_farmasi ='selesai' AND rekam_medis.status_transaksi = 'selesai' AND rekam_medis.id_pasien = '$id' ");
+WHERE rekam_medis.status_farmasi ='selesai' AND rekam_medis.status_transaksi = 'selesai' AND rekam_medis.id_pasien = '$id' order by tanggal DESC ");
             return $query->result();
         }
 

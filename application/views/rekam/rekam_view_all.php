@@ -31,7 +31,7 @@
 								<div class="module-body table">
 									<table border="1" class="w3-table-all" id="tablepeg">
 										<thead>
-											<tr><th>No</th><th>Nama Pasien</th><th>Tanggal Lahir</th><th>Action</th></tr>
+											<tr><th>No</th><th>Nama Pasien</th><th>Tanggal Periksa</th><th>Action</th></tr>
 										</thead>
 										
 										<tbody>
@@ -41,7 +41,7 @@
 												echo "<tr class='w3-hover-black'>
 												<td>".$no."</td>
 												<td>$f->nama_pasien</td>
-												<td>$f->tgl_lahir</td>
+												<td>$f->tanggal</td>
 												";?>
 												<td>
 												<a href="<?php echo base_url('index.php/rekam/index2/'); echo $f->id_pasien; ?>"><button type="button" class="btn btn-info"> Detail</button></a></td> 

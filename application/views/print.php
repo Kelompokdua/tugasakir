@@ -25,7 +25,9 @@
 			<?php
 			echo"<tr><td><font size='6'>nama pasien : ";
 			echo $pelayanan->nama_pasien;
-			echo"</font></td></tr>";
+			echo"</font></td></tr><tr><td><font size='6'>Tanggal : ";
+			echo $pelayanan->tanggal;
+			echo "</font></td></tr>";
 			
 			?>
 		</table>
