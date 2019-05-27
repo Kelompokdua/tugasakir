@@ -25,6 +25,20 @@ class rekam extends CI_Controller {
          $this->load->view('rekam/rekam_view',$data);
     }
 
+    public function sambutan_ketua()
+    {
+       $data=$this->HM->DetailData($this->input->post('idpelayanan')); 
+
+           echo 'Nama Pasien :'.$data['nama_pasien'].'<br>'; 
+           echo 'Nama Dokter :'.$data['nama_dokter'].'<br>'; 
+           echo 'Poli :'.$data['poli'].'<br>'; 
+           echo 'Tanggal Periksa :'.$data['tanggal'].'<br>'; 
+           echo 'Anamnesa :'.$data['anamnesa'].'<br>';
+           echo 'diagnose :'.$data['diagnose'].'<br>';
+           echo 'Status transaksi : Lunas'.'<br><br>';
+           echo '<img src="../../../upload/'.$data['foto_resep'].'"/>';
+   } 
+
     function index2($id) {
         $data = array(
             'judul' => 'Halaman Rekam Medis',

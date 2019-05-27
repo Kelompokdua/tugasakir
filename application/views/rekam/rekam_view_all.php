@@ -44,13 +44,34 @@
 												<td>$f->tanggal</td>
 												";?>
 												<td>
-												<a href="<?php echo base_url('index.php/rekam/index2/'); echo $f->id_pasien; ?>"><button type="button" class="btn btn-info"> Detail</button></a></td> 
+												<a class='btn btn-info' href='#' data-id="<?php echo $f->id_pelayanan; ?>" data-toggle='modal' data-target='#myModal'>
+														<i class='halflings-icon white zoom-in'>Detail</i></a></td> 
 												</tr>
 											<?php $no++; }
 											?>
 										</tbody>
 										
 									</table>
+									<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- konten modal-->
+			<div class="modal-content">
+				<!-- heading modal -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Detail Pasien</h4>
+				</div>
+				<!-- body modal -->
+				<div class="modal-body">
+					<p id="result"></p>
+				</div>
+				<!-- footer modal -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				</div>
+			</div>
+		</div>
+	</div>
 								</div>
 								
 							</div>
@@ -80,23 +101,23 @@
 	<script src="<?php echo BASE_URL('scripts/flot/jquery.flot.js') ?>" type="text/javascript"></script>
 	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
-			$('.select2').select2()
-			$('.select2').change(function() {
-				$('#keterangan').text('');
-				$.each($(this).val(),function(index, el) {
-					$('#keterangan').append(el+'\n');
-				});
-			});
-		})
-
-
-	</script>
-	<script type="text/javascript">
 		$(document).ready( function () {
 			$('#tablepeg').DataTable();
 		} );
 	</script>
-
+<script type="text/javascript">
+		$(document).on("click", ".btn", function () {
+ var myId = $(this).attr('data-id');
+ console.log(myId);
+ $.ajax({
+ type: 'POST',
+ url: 'http://localhost:81/TA/index.php/rekam/sambutan_ketua',
+ data: { idpelayanan: myId },
+ success: function(response) { 
+ $('#result').html(response);
+ }
+ });
+});
+	</script>
 </body>
 </html>

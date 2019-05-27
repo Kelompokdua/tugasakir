@@ -46,7 +46,7 @@
 												<td>$f->total_harga_semua</td>
 												";?>
 												<td>
-												<a href="<?php echo base_url('index.php/transaksi/edit/'); echo $f->id_pelayanan; ?>"><button type="button" class="btn btn-info"> Verifikasi</button></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url('index.php/printer/semua/'); echo $f->id_pelayanan; ?>"><button type="button" class="btn btn-success"> print</button></a>
+												<a href="<?php echo base_url('index.php/transaksi/edit/'); echo $f->id_pelayanan; ?>"><button type="button" class="btn btn-info"> Verifikasi</button></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url('index.php/printer/semua/'); echo $f->id_pelayanan; ?>" target="_blank"><button type="button" class="btn btn-success"> print</button></a>
 
 												</tr>
 											<?php $no++; }

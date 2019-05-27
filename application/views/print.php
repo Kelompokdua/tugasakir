@@ -18,47 +18,84 @@
 	</head>
 	<body>
 		<div class="container">
-		<h1 class="text-center">Print Transaksi</h1>
 		<br>
 		<br>
 		<table>
+			<center><img src="<?php echo base_url('/assets/images/iki.jpg') ?>">
+			<h3>Rumah Sakit Umum Cakra Husada</h3></center><br>
 			<?php
-			echo"<tr><td><font size='6'>nama pasien : ";
+			echo"<tr><td width='70%'>";
+			echo "<font size='5'>Nama pasien ";
+			echo"</font>";
+			echo "</td><td width='5%'>";
+			echo "<font size='5'>";
+			echo ":";
+			echo "</font>";
+			echo"</td><td>";
+			echo "<font size='5'>";
 			echo $pelayanan->nama_pasien;
-			echo"</font></td></tr><tr><td><font size='6'>Tanggal : ";
+			echo "</font>";
+			echo "</td></tr>";
+			echo "<tr><td><font size='5'>Tanggal ";
+			echo "</td><td>";
+			echo "<font size='5'>";
+			echo ":";
+			echo "</font>";
+			echo "</td><td>";
+			echo "<font size='5'>";
 			echo $pelayanan->tanggal;
 			echo "</font></td></tr>";
 			
 			?>
 		</table>
+		<h3>Pembayaran</h3>
 		<br>
-		<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>nama obat</th>
-						<th>Harga obat</th>
-						<th>Harga dokter</th>
-						<th>Harga total</th>
-					</tr>
-				</thead>
+		<table>
 				<tbody>
-					
 					<tr>	
 					<?php
-					$no = 1;
 					foreach ($obat as $row) {	
-						echo "<tr><td>";
+						echo "<tr><td width ='30%'>";
+						echo "</td><td width ='57%'>";
+						echo "<font size='5'>";
 						echo $row->nama;
+						echo "</font>";
 						echo "</td><td>";
+						echo "<font size='5'>";
+						echo ":";
+						echo "</font>";
+						echo "</td><td>";
+						echo "<font size='5'>";
 						echo $row->harga_obat;
-						echo "</td>";
-						$no++;
+						echo "</font>";
+						echo "</td></tr>";
 					}
+					echo "<tr>";
+					echo "<td></td>";
 					echo "<td>";
-					echo $pelayanan->harga_dokter;
+					echo "<font size='5'>";
+					echo "PELAYANAN";
+					echo "</font>";
+					echo "</td><td><font size='5'>:</font>";
 					echo "</td><td>";
-					echo $pelayanan->total_harga_semua;
+					echo "<font size='5'>";
+					echo $pelayanan->harga_dokter;
+					echo "</font>";
 					echo "</td>";
+					echo "<tr><td>";
+					echo "</td><td>";
+					echo "</td><td>";
+					echo "</td><td>----------------- +";
+					echo "</td></tr>";
+					echo "</tr>";
+					echo "<tr><td>";
+					echo "</td><td>";
+					echo "</td><td>";
+					echo "</td><td>";
+					echo "<font size='5'>";
+					echo $pelayanan->total_harga_semua;
+					echo "</font>";
+					echo "</td></tr>";
 
 					?>
 					</tr>
@@ -70,7 +107,5 @@
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- 		<script src="Hello World"></script>
 	</body>
 </html>

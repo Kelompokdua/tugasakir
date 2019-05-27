@@ -55,7 +55,7 @@
 											$no = 1;
 											foreach ($pasien as $f){
 												echo "<tr class='w3-hover-black'>
-												<td>".$no."</td>
+												<td>$f->id_pasien</td>
 												<td>$f->nama_pasien</td>
 												<td>$f->tgl_lahir</td>
 
