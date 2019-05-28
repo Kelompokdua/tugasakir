@@ -10,6 +10,17 @@ class registrasi extends CI_Controller {
         	$data['username'] = $session_data['username'];
         	$data['level'] = $session_data['level'];
             $data['poli'] = $session_data['poli'];
+             $current_controller = $this->router->fetch_class();
+          $this->load->library('acl');
+          if (! $this->acl->is_public($current_controller))
+          {
+            if(! $this->acl->is_allowed($current_controller,$data['level'])){
+              echo "<script>
+alert('Anda tidak dapat mengakses halaman ini');
+window.location.href='".BASE_URL('index.php/home')."';
+</script>";
+            }
+          }
         }else{
         	redirect('login','refresh');
         }

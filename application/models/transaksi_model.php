@@ -6,7 +6,7 @@ class transaksi_model extends CI_Model {
     public function getAllrm()
 {
     $query = $this->db->query("
-    	SELECT rekam_medis.id_pelayanan,dokter.nama_dokter, pasien.nama_pasien, dokter.biaya as harga_dokter, therapi.total_harga_obat, (dokter.biaya+therapi.total_harga_obat) AS total_harga_semua FROM rekam_medis
+    	SELECT rekam_medis.id_pelayanan,dokter.nama_dokter, pasien.nama_pasien,pasien.status_pasien,dokter.biaya as harga_dokter, therapi.total_harga_obat, (dokter.biaya+therapi.total_harga_obat) AS total_harga_semua FROM rekam_medis
 LEFT JOIN dokter on dokter.id_dokter = rekam_medis.id_dokter
 LEFT JOIN pasien on pasien.id_pasien = rekam_medis.id_pasien
 LEFT JOIN

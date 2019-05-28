@@ -60,49 +60,74 @@ $acl = array(
 	'login/index' => array(
 		'public'
 	),
-	'home' => array(
-		'operator' => true,
-		'dokter' => true,
+	'dokter' => array(
+		'asisten' => false,
+		'farmasi' => false,
+		'kasir' => false,
+		'petugas' => true,
 		'admin' => true,
 	),
 	'obat' => array(
-		'operator' => true,
-		'dokter' => false,
+		'asisten' => false,
+		'farmasi' => true,
+		'kasir' => false,
+		'petugas' => false,
 		'admin' => true,
 	),
-	'pengobatan' => array(
-		'operator' => false,
-		'dokter' => true,
+	'rekam' => array(
+		'asisten' => true,
+		'farmasi' => false,
+		'kasir' => false,
+		'petugas' => false,
 		'admin' => true,
 	),
-	'jees' => array(
-		'operator' => false,
-		'dokter' => false,
+	'rekam' => array(
+		'asisten' => true,
+		'farmasi' => false,
+		'kasir' => false,
+		'petugas' => false,
 		'admin' => true,
 	),
-	'jadwal2' => array(
-		'operator' => true,
-		'dokter' => false,
+	'registrasi' => array(
+		'asisten' => true,
+		'farmasi' => false,
+		'kasir' => false,
+		'petugas' => false,
 		'admin' => true,
 	),
-	'penverifikasian' => array(
-		'operator' => true,
-		'dokter' => false,
+	'verifikasi' => array(
+		'asisten' => false,
+		'farmasi' => true,
+		'kasir' => false,
+		'petugas' => false,
 		'admin' => true,
 	),
-	'kelir' => array(
-		'operator' => true,
-		'dokter' => false,
+	'transaksi' => array(
+		'asisten' => false,
+		'farmasi' => false,
+		'kasir' => true,
+		'petugas' => false,
 		'admin' => true,
 	),
-	'import' => array(
-		'operator' => false,
-		'dokter' => false,
+	'poli' => array(
+		'asisten' => false,
+		'farmasi' => false,
+		'kasir' => false,
+		'petugas' => true,
 		'admin' => true,
 	),
-	'jadwal' => array(
-		'operator' => true,
-		'dokter' => true,
+	'pasien' => array(
+		'asisten' => false,
+		'farmasi' => false,
+		'kasir' => false,
+		'petugas' => true,
+		'admin' => true,
+	),
+	'user' => array(
+		'asisten' => false,
+		'farmasi' => false,
+		'kasir' => false,
+		'petugas' => false,
 		'admin' => true,
 	)
 

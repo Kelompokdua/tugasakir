@@ -36,12 +36,12 @@ class Login extends CI_Controller {
         if($result){
         	$sess_array = array();
         	foreach ($result as $key) {
-                $data_dokter = $this->db->get_where('dokter', array('id_dokter' => $key->id_dokter))->row();
+                $data_dokter = $this->db->get_where('dokter', array('id_dokter' => $key->id_dokter))->result();
 
         		$sess_array = array(
         			'id_login'=>$key->id_login,
-                    'id_dokter'=>$key->id_dokter,
-                    'poli'=>$data_dokter->poli,
+                    'id_dokter'=>(count($data_dokter) > 0 ? $key->id_dokter : ''),
+                    'poli'=>(count($data_dokter) > 0 ? $data_dokter[0]->poli : ''),
         			'username'=>$key->username,
                     'nama_pengguna'=>$key->nama_pengguna,
                     'level' => $key->level

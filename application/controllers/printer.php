@@ -19,6 +19,13 @@ class Printer extends CI_Controller {
 		$this->load->view('print', $data);
 	}
 
+	public function semua1($id)
+	{
+		 $data['pelayanan'] = $this->pasien_model->getdetailpelayanan($id);
+		 $data['obat'] = $this->pasien_model->getdaftartherapi($id);
+		$this->load->view('print1', $data);
+	}
+
 	
 
 

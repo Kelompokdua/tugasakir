@@ -43,11 +43,8 @@
 												<td><img src="../upload/	<?php echo $f->foto_resep;?>"  alt=""></td>
 												
 												<td>
-												<?php if ($f->status_pasien == "UMUM") {
-												?><a href="<?php echo base_url('index.php/verifikasi/edit/'); echo $f->id_pelayanan; ?>"><button type="button" class="btn btn-info"> Confirm</button></a><?php	
-												}else{ ?>
-												<a href="<?php echo base_url('index.php/verifikasi/edit1/'); echo $f->id_pelayanan; ?>"><button type="button" class="btn btn-success"> Selesai</button></a>
-												<?php } ?>
+												<a href="<?php echo base_url('index.php/verifikasi/edit/'); echo $f->id_pelayanan; ?>"><button type="button" class="btn btn-info"> Confirm</button></a>
+												
 												</td> 
 												</tr>
 											<?php $no++; }

@@ -28,6 +28,14 @@
 								<div align="right">
 								
 								</div>
+								<div id="">
+									
+								<br>
+								Keyword :
+								<br>
+								<input type="text" id="tanggal" placeholder="tanggal Periksa" style="height: 30px;">
+
+								</div>
 								<div class="module-body table">
 									<table border="1" class="w3-table-all" id="tablepeg">
 										<thead>
@@ -99,12 +107,25 @@
 	<script src="<?php echo BASE_URL('bootstrap/js/bootstrap.min.js" type="text/javascript') ?>"></script>
 	<script src="<?php echo BASE_URL('select2/dist/js/select2.full.js" type="text/javascript') ?>"></script>
 	<script src="<?php echo BASE_URL('scripts/flot/jquery.flot.js') ?>" type="text/javascript"></script>
-	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready( function () {
-			$('#tablepeg').DataTable();
-		} );
+			$('#tablepeg').DataTable( {
+				"dom" : '<"search"l><"top">rt<"bottom"ip><"clear">'
+			});
+						$('#tanggal').on( 'keyup', function () {
+
+					$('#tablepeg').DataTable()
+        			.columns( 2 )
+        			.search( this.value )
+        			.draw();
+
+
+    			
+} );
+		});
+
 	</script>
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 		$(document).on("click", ".btn", function () {
  var myId = $(this).attr('data-id');
@@ -119,5 +140,6 @@
  });
 });
 	</script>
+	
 </body>
 </html>

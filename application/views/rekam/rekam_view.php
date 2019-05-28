@@ -80,19 +80,6 @@
 	<script src="<?php echo BASE_URL('scripts/flot/jquery.flot.js') ?>" type="text/javascript"></script>
 	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
-			$('.select2').select2()
-			$('.select2').change(function() {
-				$('#keterangan').text('');
-				$.each($(this).val(),function(index, el) {
-					$('#keterangan').append(el+'\n');
-				});
-			});
-		})
-
-
-	</script>
-	<script type="text/javascript">
 		$(document).ready( function () {
 			$('#tablepeg').DataTable();
 		} );
