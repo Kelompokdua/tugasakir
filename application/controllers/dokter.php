@@ -29,11 +29,12 @@ window.location.href='".BASE_URL('index.php/home')."';
     function index() {
          $data = array(
             'judul' => 'Halaman Dokter',
+            'menu' => 'dokter',
              'dokter' => $this->DM->getAlldokter()
              );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('dokter/dokter_view',$data);
+         $this->load->view('dokter/dokterview',$data);
+          $this->load->view('tampilan/kiri_view');
+         $this->load->view('tampilan/atas_view');
     }
 
     function insert(){
@@ -42,12 +43,13 @@ window.location.href='".BASE_URL('index.php/home')."';
         $this->form_validation->set_rules('poli', 'poli', 'trim|required');
          $this->form_validation->set_rules('biaya', 'Biaya Dokter', 'trim|required');
           $data = array(
-             'poli' => $this->DM->getAllpoli()
+             'poli' => $this->DM->getAllpoli(),
+             'menu' => 'dokter'
              );
         if ($this->form_validation->run()==FALSE) {
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('dokter/insert_dokter',$data);
+         $this->load->view('dokter/insertdokter',$data);
+         $this->load->view('tampilan/kiri_view');
+         $this->load->view('tampilan/atas_view');
         }else{
             ?>
             <script type="text/javascript">
@@ -68,13 +70,14 @@ window.location.href='".BASE_URL('index.php/home')."';
          $this->form_validation->set_rules('biaya', 'Biaya Dokter', 'trim|required');
 		$data = array(
 			'dokter' => $this->DM->getDokter($id),
-             'poli' => $this->DM->getAllpoli()
+             'poli' => $this->DM->getAllpoli(),
+             'menu' => 'dokter'
              );
        
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('tampilan/atas');
-            $this->load->view('tampilan/kiri');
-            $this->load->view('dokter/edit_dokter', $data);
+            $this->load->view('dokter/editdokter', $data);
+            $this->load->view('tampilan/kiri_view');
+         $this->load->view('tampilan/atas_view');
         }else {
             ?>
             <script type="text/javascript">
@@ -89,12 +92,15 @@ window.location.href='".BASE_URL('index.php/home')."';
 
     function hapus($id)
     {
+      $data = array(
+            'menu' => 'dokter',
+             );
         $this->form_validation->set_rules('iddokter', 'ID Dokter', 'trim|required');
         $data['dokter'] = $this->DM->getDokter($id);
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('tampilan/atas');
-            $this->load->view('tampilan/kiri');
-            $this->load->view('dokter/hapus_dokter', $data);
+            $this->load->view('dokter/hapusdokter', $data);
+            $this->load->view('tampilan/kiri_view');
+         $this->load->view('tampilan/atas_view');
         }else {?>
         <script type="text/javascript">
     alert("Data Dokter berhasil dihapus");

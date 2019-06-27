@@ -53,7 +53,7 @@ public function getumum()
 FROM registrasi 
 inner join poli on registrasi.id_poli = poli.id_poli 
 INNER join pasien on pasien.id_pasien = registrasi.id_pasien
-WHERE registrasi.status='Belum' AND poli.nama = 'Umum'");
+WHERE registrasi.status='Belum' AND poli.nama = 'Umum' order by tanggal ASC");
             return $query->result();
         }
 

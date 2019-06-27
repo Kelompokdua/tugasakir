@@ -29,11 +29,12 @@ window.location.href='".BASE_URL('index.php/home')."';
     function index() {
         $data = array(
     		'judul' => 'Halaman verifikasi',
+        'menu' => 'verifikasi',
     		 'verif' => $this->VM->getAllverif()
     		 );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('verif/verifikasi_view',$data);
+         $this->load->view('verif/verifikasiview',$data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
     }
 
      function edit($id)

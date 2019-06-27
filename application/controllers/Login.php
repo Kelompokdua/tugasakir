@@ -9,7 +9,7 @@ class Login extends CI_Controller {
     }
 
     function index() {
-        $this->load->view('login_n');
+        $this->load->view('login_view');
     }
 
     public function cekLogin()
@@ -19,7 +19,7 @@ class Login extends CI_Controller {
     	$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_cekDb');
         
     	if ($this->form_validation->run()==FALSE) {
-            $this->load->view('login_n');
+            $this->load->view('login_view');
     	}else {
            redirect('home','refresh');
     	}
@@ -34,24 +34,24 @@ class Login extends CI_Controller {
         );
         $result = $this->usr->cekL($input);
         if($result){
-        	$sess_array = array();
-        	foreach ($result as $key) {
+            $sess_array = array();
+            foreach ($result as $key) {
                 $data_dokter = $this->db->get_where('dokter', array('id_dokter' => $key->id_dokter))->result();
 
-        		$sess_array = array(
-        			'id_login'=>$key->id_login,
+                $sess_array = array(
+                    'id_login'=>$key->id_login,
                     'id_dokter'=>(count($data_dokter) > 0 ? $key->id_dokter : ''),
                     'poli'=>(count($data_dokter) > 0 ? $data_dokter[0]->poli : ''),
-        			'username'=>$key->username,
+                    'username'=>$key->username,
                     'nama_pengguna'=>$key->nama_pengguna,
                     'level' => $key->level
-        		);
-        		$this->session->set_userdata('logged_in',$sess_array);
-        		return true;
-        	}
+                );
+                $this->session->set_userdata('logged_in',$sess_array);
+                return true;
+            }
         }else{
-        	$this->form_validation->set_message('cekDb',"Login Gagal");
-        	return false;
+            $this->form_validation->set_message('cekDb',"Login Gagal");
+            return false;
         }
     }
 

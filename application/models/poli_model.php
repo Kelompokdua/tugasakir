@@ -10,7 +10,7 @@ class poli_model extends CI_Model {
 
 public function getAllpoli()
 {
-    $query = $this->db->get('poli');
+    $query = $this->db->get('poli');//dari database,get(mengambil) semua record di tabel poli
         return $query->result();
 }
 

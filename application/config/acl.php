@@ -76,15 +76,8 @@ $acl = array(
 	),
 	'rekam' => array(
 		'asisten' => true,
-		'farmasi' => false,
-		'kasir' => false,
-		'petugas' => false,
-		'admin' => true,
-	),
-	'rekam' => array(
-		'asisten' => true,
-		'farmasi' => false,
-		'kasir' => false,
+		'farmasi' => true,
+		'kasir' => true,
 		'petugas' => false,
 		'admin' => true,
 	),
@@ -92,7 +85,7 @@ $acl = array(
 		'asisten' => true,
 		'farmasi' => false,
 		'kasir' => false,
-		'petugas' => false,
+		'petugas' => true,
 		'admin' => true,
 	),
 	'verifikasi' => array(

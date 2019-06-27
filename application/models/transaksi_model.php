@@ -15,7 +15,7 @@ LEFT JOIN
     INNER JOIN obat on therapi.id_obat = obat.id_obat
     GROUP BY therapi.id_pelayanan
 ) therapi on therapi.id_pelayanan = rekam_medis.id_pelayanan
-WHERE rekam_medis.status_farmasi='selesai' AND rekam_medis.status_transaksi ='pending'
+WHERE rekam_medis.status_farmasi='pending' && rekam_medis.status_transaksi='pending'
 ");
             return $query->result();
 }

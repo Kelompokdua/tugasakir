@@ -17,10 +17,11 @@ class home extends CI_Controller {
     function index() {
     	$data = array(
     		'judul' => 'Halaman utama',
+            'menu'  => 'home'
     		 );
-    	 $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-        $this->load->view('index',$data);
+        $this->load->view('index_view',$data);
+        $this->load->view('tampilan/kiri_view',$data);
+        $this->load->view('tampilan/atas_view');
     }
 }
         

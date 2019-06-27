@@ -82,7 +82,8 @@ LEFT JOIN pasien on pasien.id_pasien = registrasi.id_pasien where registrasi.sta
         'tanggal' => $datetime,
         'anamnesa' => $this->input->post('anamnesa'),
         'diagnose' => $this->input->post('diagnose'),
-        'foto_resep' => $fileName
+        'foto_resep' => $fileName,
+        'lab' => $this->upload->data('file_name')
         );
      $this->db->insert('rekam_medis', $data);
      $insert_id = $this->db->insert_id();

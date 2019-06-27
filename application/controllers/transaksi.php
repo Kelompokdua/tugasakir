@@ -29,11 +29,12 @@ window.location.href='".BASE_URL('index.php/home')."';
     function index() {
         $data = array(
     		'judul' => 'Halaman transaksi',
+        'menu' => 'transaksi',
     		 'rm' => $this->TM->getAllrm()
     		 );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('transaksi/transaksi_index',$data);
+         $this->load->view('transaksi/transaksiindex',$data);     
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
     }
 
      function edit($id)
@@ -44,7 +45,8 @@ window.location.href='".BASE_URL('index.php/home')."';
 </script>
                 <?php
                 $this->TM->updateTrans($id);
-                redirect('transaksi','refresh');       
+                redirect('transaksi','refresh'); 
+                      
         
 
     }

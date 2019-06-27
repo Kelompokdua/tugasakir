@@ -10,7 +10,7 @@ class user_model extends CI_Model {
 
     public function getAlluser()
     {
-        $query = $this->db->get('login');
+        $query = $this->db->get('login');//mengambil tabel login
         if($query->num_rows()>0){
             return $query->result();
         }

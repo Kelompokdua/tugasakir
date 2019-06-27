@@ -29,41 +29,58 @@ window.location.href='".BASE_URL('index.php/home')."';
     function index() {
         $data = array(
     		'judul' => 'Halaman Rekam',
+        'menu' => 'rekam',
     		 'rekam' => $this->HM->getsinglerekam()
     		 );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('rekam/rekam_view',$data);
-    }
-
-    function test() {
-      $result = $this->db->query("SELECT t.id_therapi, t.id_obat, o.nama, o.jenis_obat, o.harga_obat, rk.*, pas.nama_pasien, d.nama_dokter, d.biaya FROM therapi AS t, rekam_medis AS rk, obat AS o, pasien AS pas, dokter AS d WHERE t.id_pelayanan = rk.id_pelayanan AND t.id_obat = o.id_obat AND pas.id_pasien = rk.id_pasien AND d.id_dokter = rk.id_dokter")->result();
-
-        var_dump($result);
+         $this->load->view('rekam/rekamview',$data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
     }
 
     public function sambutan_ketua()
     {
-       $data=$this->HM->DetailData($this->input->post('idpelayanan')); 
-
-           echo 'Nama Pasien :'.$data['nama_pasien'].'<br>'; 
-           echo 'Nama Dokter :'.$data['nama_dokter'].'<br>'; 
-           echo 'Poli :'.$data['poli'].'<br>'; 
-           echo 'Tanggal Periksa :'.$data['tanggal'].'<br>'; 
-           echo 'Anamnesa :'.$data['anamnesa'].'<br>';
-           echo 'diagnose :'.$data['diagnose'].'<br>';
-           echo 'Status transaksi : Lunas'.'<br><br>';
-           echo '<img src="../../../upload/'.$data['foto_resep'].'"/>';
+       $data=$this->HM->DetailData((int)$this->input->post('idpelayanan')); 
+           echo 'Nama Pasien :'.$data[0]->nama_pasien.'<br>'; 
+           echo 'Nama Dokter :'.$data[0]->nama_dokter.'<br>'; 
+           echo 'Poli :'.$data[0]->poli.'<br>'; 
+           echo 'Tanggal Periksa :'.$data[0]->tanggal.'<br>'; 
+           echo 'Anamnesa :'.$data[0]->anamnesa.'<br>';
+           echo 'diagnose :'.$data[0]->diagnose.'<br>';
+           echo "Daftar obat :";
+           echo "<ol>";
+          foreach ($data as $key) {
+          echo "<ul>";
+           echo $key->nama; 
+           echo "</ul>";
+          }
+          echo "</ol>";
+           echo '<a href="../../../pdf/'.$data[0]->lab.'" target="_blank"><u>Lihat hasil lab</u></a><br>';
+           echo 'Status transaksi : Lunas'.'<br><br>'; 
+           echo '<img src="../../../upload/'.$data[0]->foto_resep.'"/>';
    } 
 
     function index2($id) {
-        $data = array(
+      if ($this->session->userdata('logged_in')['poli'] == 'Gigi') {
+             $data = array(
             'judul' => 'Halaman Rekam Medis',
+            'menu' => 'rekam',
+             'rekam' => $this->HM->getrekamgigi($id)
+             );
+        }else if($this->session->userdata('logged_in')['poli'] == 'Kesehatan anak dan ibu'){
+             $data = array(
+            'judul' => 'Halaman Rekam Medis',
+            'menu' => 'rekam',
+             'rekam' => $this->HM->getrekamkia($id)
+             );
+        }else{
+             $data = array(
+            'judul' => 'Halaman Rekam Medis',
+            'menu' => 'rekam',
              'rekam' => $this->HM->getrekam($id)
              );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('rekam/rekam_view_all',$data);
+        }
+         $this->load->view('rekam/rekamviewall',$data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
     }
 }
- 

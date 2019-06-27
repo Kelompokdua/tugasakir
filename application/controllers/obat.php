@@ -23,28 +23,31 @@ window.location.href='".BASE_URL('index.php/home')."';
         }else{
         	redirect('login','refresh');
         }
-        $this->load->model('obat_model','OM',true);
+        $this->load->model('obat_model','OM',true);//memuat model(obat_model) dan mengganti nama
     }
 
     function index() {
        $data = array(
             'judul' => 'Halaman obat',
-             'obat' => $this->OM->getAllobat()
+            'menu' => 'obat',
+             'obat' => $this->OM->getAllobat()//membungkus getallobat yang ada di OM ditaruh di variabel obat
              );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('obat/obat_view',$data);
+         $this->load->view('obat/obatview',$data);//memuat view-obat-obatview     
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         
     }
 
     function insert(){
-
+        $data = array(
+            'menu' => 'obat'
+             );
         $this->form_validation->set_rules('nama', 'Nama Obat', 'trim|required');
          $this->form_validation->set_rules('harga', 'Harga Obat', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('obat/insert_obat');
+         $this->load->view('obat/insertobat',$data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else{
             ?>
             <script type="text/javascript">
@@ -59,15 +62,18 @@ window.location.href='".BASE_URL('index.php/home')."';
 
     function edit($id)
     {
+        $data = array(
+            'menu' => 'obat'
+             );
         $this->form_validation->set_rules('idobat', 'ID Obat', 'trim|required');
         $this->form_validation->set_rules('nama', 'Nama Obat', 'trim|required');
         $this->form_validation->set_rules('jenis', 'jenis Obat', 'trim|required');
          $this->form_validation->set_rules('harga', 'Harga Obat', 'trim|required');
         $data['obat'] = $this->OM->getObat($id);
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('tampilan/atas');
-            $this->load->view('tampilan/kiri');
-            $this->load->view('obat/edit_obat', $data);
+            $this->load->view('obat/editobat', $data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else {
             ?>
             <script type="text/javascript">
@@ -82,12 +88,15 @@ window.location.href='".BASE_URL('index.php/home')."';
 
     function hapus($id)
     {
+        $data = array(
+            'menu' => 'obat'
+             );
         $this->form_validation->set_rules('idobat', 'ID Obat', 'trim|required');
         $data['obat'] = $this->OM->getObat($id);
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('tampilan/atas');
-            $this->load->view('tampilan/kiri');
-            $this->load->view('obat/hapus_obat', $data);
+            $this->load->view('obat/hapusobat', $data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else {
             ?>
             <script type="text/javascript">

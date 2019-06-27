@@ -60,16 +60,19 @@ window.location.href='".BASE_URL('index.php/home')."';
     function index() {
        $data = array(
             'judul' => 'Halaman Pasien',
+            'menu' => 'pasien',
              'pasien' => $this->PM->getAllpasien()
-             );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('pasien/pasien_view',$data);
+             );    
+         $this->load->view('pasien/pasienview',$data);
+         $this->load->view('tampilan/kiri_view');
+         $this->load->view('tampilan/atas_view');
         
     }
 
     function insert(){
-
+ $data = array(
+            'menu' => 'pasien',
+             );    
         $this->form_validation->set_rules('nama', 'nama Pasien', 'trim|required');
         $this->form_validation->set_rules('jeniskelamin', 'jenis kelamin Pasien', 'trim|required');
         $this->form_validation->set_rules('alamat', 'alamat Pasien', 'trim|required');
@@ -78,9 +81,10 @@ window.location.href='".BASE_URL('index.php/home')."';
         $this->form_validation->set_rules('status', 'status Pasien', 'trim|required');
         $this->form_validation->set_rules('status_pasien', 'jenis Pasien', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('pasien/insert_pasien');
+         
+         $this->load->view('pasien/insertpasien',$data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else{?>
         <script type="text/javascript">
     alert("Data Pasien berhasil dimasukkan");
@@ -94,6 +98,7 @@ window.location.href='".BASE_URL('index.php/home')."';
 
     function edit($id)
     {
+
         $this->form_validation->set_rules('idpasien', 'ID Pasien', 'trim|required');
          $this->form_validation->set_rules('nama', 'nama Pasien', 'trim|required');
         $this->form_validation->set_rules('jeniskelamin', 'jenis kelamin Pasien', 'trim|required');
@@ -102,11 +107,14 @@ window.location.href='".BASE_URL('index.php/home')."';
         $this->form_validation->set_rules('telp', 'Telp Pasien', 'trim|required');
         $this->form_validation->set_rules('status', 'status Pasien', 'trim|required');
         $this->form_validation->set_rules('status_pasien', 'jenis Pasien', 'trim|required');
-        $data['pasien'] = $this->PM->getPasien($id);
+        $data = array(
+            'menu' => 'pasien',
+            'pasien' => $this->PM->getPasien($id)
+             );   
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('tampilan/atas');
-            $this->load->view('tampilan/kiri');
-            $this->load->view('pasien/edit_pasien', $data);
+            $this->load->view('pasien/editpasien', $data);
+            $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else {
             ?>
 <script type="text/javascript">
@@ -121,12 +129,15 @@ window.location.href='".BASE_URL('index.php/home')."';
 
     function hapus($id)
     {
+      $data = array(
+            'menu' => 'pasien',
+             );    
         $this->form_validation->set_rules('idpasien', 'ID Pasien', 'trim|required');
         $data['pasien'] = $this->PM->getPasien($id);
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('tampilan/atas');
-            $this->load->view('tampilan/kiri');
-            $this->load->view('pasien/hapus_pasien', $data);
+            $this->load->view('pasien/hapuspasien', $data);
+            $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else {
           ?>
 <script type="text/javascript">

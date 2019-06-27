@@ -54,7 +54,7 @@
 										<?php echo form_open('user/hapus/'.$this->uri->segment(3)); ?>
 										<div class="control-group">
 											<div class="controls">
-												<input type="hidden" id="basicinput" name="idlogin" value="<?php echo $this->uri->segment(3); ?>" class="span8">
+												<input type="text" id="basicinput" name="idlogin" value="<?php echo $this->uri->segment(3); ?>" class="span8">
 											</div>
 										</div>
 										<div class="control-group">

@@ -18,54 +18,49 @@
 	</head>
 	<body>
 		<div class="container">
-		<br>
-		<br>
+		<center><img src="assets/images/iki.jpg" width="75" height="75"></center>
+			<p>Rumah Sakit Umum Cakra Husada</p><br>
 		<table>
-			<center><img src="<?php echo base_url('/assets/images/iki.jpg') ?>">
-			<h3>Rumah Sakit Umum Cakra Husada</h3></center><br>
 			<?php
 			echo"<tr><td width='70%'>";
-			echo "<font size='5'>Nama pasien ";
+			echo "<font size='3'>Nama pasien ";
 			echo"</font>";
 			echo "</td><td width='5%'>";
-			echo "<font size='5'>";
+			echo "<font size='3'>";
 			echo ":";
 			echo "</font>";
 			echo"</td><td>";
-			echo "<font size='5'>";
+			echo "<font size='3'>";
 			echo $pelayanan->nama_pasien;
 			echo "</font>";
 			echo "</td></tr>";
-			echo "<tr><td><font size='5'>Tanggal ";
+			echo "<tr><td><font size='3'>Tanggal ";
 			echo "</td><td>";
-			echo "<font size='5'>";
+			echo "<font size='3'>";
 			echo ":";
 			echo "</font>";
 			echo "</td><td>";
-			echo "<font size='5'>";
+			echo "<font size='3'>";
 			echo $pelayanan->tanggal;
 			echo "</font></td></tr>";
 			
 			?>
 		</table>
-		<h3>Pembayaran</h3>
-		<br>
-		<table>
-				<tbody>
-					<tr>	
+		<h4>Pembayaran</h4>
+		<table>	
 					<?php
 					foreach ($obat as $row) {	
-						echo "<tr><td width ='30%'>";
-						echo "</td><td width ='57%'>";
-						echo "<font size='5'>";
+						echo "<tr><td width ='40%'>&nbsp;&nbsp;";
+						echo "</td><td width ='60%'>";
+						echo "<font size='3'>";
 						echo $row->nama;
 						echo "</font>";
 						echo "</td><td>";
-						echo "<font size='5'>";
+						echo "<font size='3'>";
 						echo ":";
 						echo "</font>";
 						echo "</td><td>";
-						echo "<font size='5'>";
+						echo "<font size='3'>";
 						echo $row->harga_obat;
 						echo "</font>";
 						echo "</td></tr>";
@@ -73,12 +68,12 @@
 					echo "<tr>";
 					echo "<td></td>";
 					echo "<td>";
-					echo "<font size='5'>";
-					echo "PELAYANAN";
+					echo "<font size='3'>";
+					echo "Biaya Dokter";
 					echo "</font>";
-					echo "</td><td><font size='5'>:</font>";
+					echo "</td><td><font size='3'>:</font>";
 					echo "</td><td>";
-					echo "<font size='5'>";
+					echo "<font size='3'>";
 					echo $pelayanan->harga_dokter;
 					echo "</font>";
 					echo "</td>";
@@ -89,18 +84,19 @@
 					echo "</td></tr>";
 					echo "</tr>";
 					echo "<tr><td>";
+					echo "</td><td>Total";
 					echo "</td><td>";
 					echo "</td><td>";
-					echo "</td><td>";
-					echo "<font size='5'>";
+					echo "<font size='3'>";
 					echo $pelayanan->total_harga_semua;
 					echo "</font>";
 					echo "</td></tr>";
 
 					?>
 					</tr>
-				</tbody>
+				
 			</table>
+		
 			</div>
 
 		<!-- jQuery -->

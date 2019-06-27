@@ -23,31 +23,33 @@ window.location.href='".BASE_URL('index.php/home')."';
         }else{
         	redirect('login','refresh');
         }
-        $this->load->model('user_model','UM',true);
+        $this->load->model('user_model','UM',true);//memuat model(user_model) dan mengganti nama
     }
 
     function index() {
          $data = array(
             'judul' => 'Halaman Pengguna',
+            'menu' => 'user',
              'user' => $this->UM->getAlluser(),
              'dokter' => $this->UM->getusercampurdokter()
              );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('user/user_view',$data);
+         $this->load->view('user/userview',$data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
     }
 
     function insert(){
           $data = array(
-             'dokter' => $this->UM->getdokter()
+             'dokter' => $this->UM->getdokter(),
+             'menu' => 'user'
              );
         $this->form_validation->set_rules('nama', 'Nama pengguna', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('passwordulang', 'Password Konfirmasi salah', 'required|matches[password]');
         if ($this->form_validation->run()==FALSE) {
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('user/insert_user',$data);
+         $this->load->view('user/insertuser',$data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else{
           ?>
           <script type="text/javascript">
@@ -62,6 +64,9 @@ window.location.href='".BASE_URL('index.php/home')."';
 
     function edit($id)
     {
+      $data = array(
+            'menu' => 'user'
+             );
          $this->form_validation->set_rules('nama', 'Nama pengguna', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('passwordulang', 'Password Konfirmasi salah', 'required|matches[password]');
@@ -69,9 +74,9 @@ window.location.href='".BASE_URL('index.php/home')."';
         $data['dokter'] = $this->UM->getdokter();
         $data['dokter1'] = $this->UM->getusercampurdokter();
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('tampilan/atas');
-            $this->load->view('tampilan/kiri');
-            $this->load->view('user/edit_user', $data);
+            $this->load->view('user/edituser', $data);
+            $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else {
           ?>
           <script type="text/javascript">
@@ -87,14 +92,17 @@ window.location.href='".BASE_URL('index.php/home')."';
 
     function hapus($id)
     {
+      $data = array(
+            'menu' => 'user'
+             );
         $this->form_validation->set_rules('idlogin', 'ID Login', 'trim|required');
         
         $data['dokter1'] = $this->UM->getusercampurdokter();
         $data['user'] = $this->UM->getUser($id);
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('tampilan/atas');
-            $this->load->view('tampilan/kiri');
-            $this->load->view('user/hapus_user', $data);
+            $this->load->view('user/hapususer', $data);
+            $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
         }else {
           ?>
           <script type="text/javascript">

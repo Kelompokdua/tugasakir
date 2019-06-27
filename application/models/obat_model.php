@@ -10,7 +10,7 @@ class obat_model extends CI_Model {
 
     public function getAllobat()
     {
-        $query = $this->db->get('obat');
+        $query = $this->db->get('obat');//tabel obat
         return $query->result();
     }
 

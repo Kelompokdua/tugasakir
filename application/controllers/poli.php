@@ -23,27 +23,35 @@ window.location.href='".BASE_URL('index.php/home')."';
 		}else{
 			redirect('login','refresh');
 		}
-		$this->load->model('poli_model','PM',true);
+		$this->load->model('poli_model','PM',true);//memanggil model,muatlah model (poli_model dan saya berinama PM)
     }
 
-    function index() {
+    function index() {//fungsi yg dipanggil oleh controller
     	$data = array(
     		'judul' => 'Halaman poli',
-    		 'poli' => $this->PM->getAllpoli()
+    		'menu' => 'poli',
+    		 'poli' => $this->PM->getAllpoli()//semua record yg ada di dalam tabel poli di bungkus di variabel poli
     		 );
-         $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('poli/indexpoli',$data);
+    	//ketika fungsi index dipanggil yg tampil adalah
+         $this->load->view('poli/poli_view',$data);//load (muat) view (tampilan)..muat tampilan di folder poli cari yang bernama poli_view
+         $this->load->view('tampilan/kiri_view');
+         $this->load->view('tampilan/atas_view');
     }
 
     function insert(){
 
+    	$data = array(
+    		'menu' => 'poli',
+    		 );
 		$this->form_validation->set_rules('nama', 'Nama Poli', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan Poli', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
-			 $this->load->view('tampilan/atas');
-         $this->load->view('tampilan/kiri');
-         $this->load->view('poli/insertpoli');
+
+         
+         $this->load->view('poli/insert_poli',$data);
+         $this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
+    
 		}else{?>
 				<script type="text/javascript">
     alert("Data Poli berhasil dimasukkan");
@@ -57,6 +65,9 @@ window.location.href='".BASE_URL('index.php/home')."';
 
 	function edit($id)
 	{
+		$data = array(
+            'menu' => 'poli',
+             );    
 		$this->form_validation->set_rules('idpoli', 'ID Poli', 'trim|required');
 		$this->form_validation->set_rules('nama', 'Nama Poli', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan Poli', 'trim|required');
@@ -64,9 +75,9 @@ window.location.href='".BASE_URL('index.php/home')."';
         //$this->load->view('edit_profil', $data);
 
 		if ($this->form_validation->run()==FALSE) {
-			$this->load->view('tampilan/atas');
-			$this->load->view('tampilan/kiri');
-			$this->load->view('poli/edit_poli', $data);
+			$this->load->view('poli/editpoli', $data);
+			$this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
 		}else {
 			?>
 			<script type="text/javascript">
@@ -81,12 +92,16 @@ window.location.href='".BASE_URL('index.php/home')."';
 
 	function hapus($id)
 	{
+		$data = array(
+            'menu' => 'poli',
+             );    
 		$this->form_validation->set_rules('idpoli', 'id Poli', 'trim|required');
 		$data['poli'] = $this->PM->getPoli($id);
 		if ($this->form_validation->run()==FALSE) {
-			$this->load->view('tampilan/atas');
-			$this->load->view('tampilan/kiri');
-			$this->load->view('poli/hapus_poli', $data);
+
+			$this->load->view('poli/hapuspoli', $data);
+			$this->load->view('tampilan/atas_view');
+         $this->load->view('tampilan/kiri_view');
 		}else {
 			?>
 			<script type="text/javascript">
